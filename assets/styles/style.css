@@ -1,4 +1,126 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: FontAwesome;
+}
+
+/* Mobile First design */
+/* Header Section */
+header {
+    width: 100%;
+    background-color: rgba(8, 23, 63, 0.849);
+    color: white;
+    height: 100px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 34px;
+    font-variant: small-caps; 
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Search section */
+
+.container {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+}
+
+.search h2 {
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+}
+
+.query,
+.city-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 10px;
+}
+
+.form-control{
+    width:70%;
+    height:35px;
+}
+
+.btn {
+    width: 20%;
+    height:35px;
+    background-color: rgba(8, 23, 63, 0.849);
+}
+ 
+#search-button {
+    border-radius: 0 .25rem .25rem 0;
+}
+.city-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.city {
+    margin: 5px;
+    width: 80%;
+    height: 35px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.city i {
+    cursor: pointer;
+    width: 20%;
+}
+
+/* Display result section */
+
+.heading {
+    display: flex;
+}
+
+.heading h2 {
+    margin:2px;
+    padding:2px;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list ul li {
+    font-style: italic;
+    font-family: cursive;
+    font-size: 16px;
+}
+
+#five-day {
+    width: 100%;
+    height: 35px;
+    color: whitesmoke;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
 }

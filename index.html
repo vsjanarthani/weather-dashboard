@@ -5,9 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <!-- My CSS file -->
     <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
+
+<!-- body -->
 <body>
+    <!-- Header -->
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <!-- Search Section -->
+    <section class="container">
+        <article class="search">
+            <h2>Search for a city:</h2>
+            <div class="query">
+                <input type="search" id="search-input" class="form-control" placeholder="search"/>
+                <button id="search-button" type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </article>
+        <article class="city-display">
+            <button class="btn city">
+                <p>Sample</p>
+                <i class="far fa-heart"></i>
+            </button>
+        </article>
+    </section>  
+
+    <!-- Display result section -->
+    <section class="container border-top border-bottom">
+        <article class="heading">
+            <h2>city</h2>
+            <h2>date</h2>
+            <h2>img</h2>
+        </article>
+        <article class="list">
+            <ul>
+                <li>Temperature:</li>
+                <li>Humidity:</li>
+                <li>Wind Speed:</li>
+                <li>UV Index:</li>
+            </ul>
+        </article>
+        <article class="toggle">
+            <button id="five-day" class="btn">5-Day Forecast</button>
+        </article>
+    </section>  
+
+    <!-- !-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js">
+    </script>
+    <!-- My js file -->
     <script src="./assets/script/script.js"></script>
 </body>
 </html>
