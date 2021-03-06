@@ -36,7 +36,7 @@
         <article class="search">
             <h2>Search for a city:</h2>
             <div class="query">
-                <input type="search" id="search-input" class="form-control" placeholder="search"/>
+                <input type="search" id="search-input"class="form-control" placeholder="search"/>
                 <button id="search-button" type="button" class="btn btn-primary">
                     <i class="fas fa-search"></i>
                 </button>
@@ -51,18 +51,18 @@
     </section>  
 
     <!-- Display result section -->
-    <section class="container border-top border-bottom">
+    <section id="display" class="container border-top border-bottom">
         <article class="heading">
-            <h2>city</h2>
-            <h2>date</h2>
-            <h2>img</h2>
+            <h2 id="location">Location</h2>
+            <h2 id="date">Date</h2>
         </article>
         <article class="list">
+            <img id="icon" alt="weather-icon">
             <ul>
-                <li>Temperature:</li>
-                <li>Humidity:</li>
-                <li>Wind Speed:</li>
-                <li>UV Index:</li>
+                <li id="weather">Weather:</li>
+                <li id="temperature">Temperature:</li>
+                <li id="humidity">Humidity:</li>
+                <li id="wind-speed">Wind Speed:</li>  
             </ul>
         </article>
         <article class="toggle">
