@@ -32,7 +32,7 @@
     </header>
 
     <!-- Search Section -->
-    <section class="container">
+    <section id="searchbox" class="container">
         <article class="search">
             <h2>Search for a city:</h2>
             <div class="query">
@@ -50,7 +50,7 @@
     </section>  
 
     <!-- Display result section -->
-    <section id="display" class="container border-top border-bottom">
+    <section id="display" class="container border-top border-bottom displayres">
         <article class="heading">
             <h2 id="location">Location</h2>
             <h2 id="date">Date</h2>
@@ -58,14 +58,31 @@
         <article class="list">
             <img id="icon" alt="weather-icon">
             <ul>
-                <li id="weather">Weather:</li>
-                <li id="temperature">Temperature:</li>
-                <li id="humidity">Humidity:</li>
-                <li id="wind-speed">Wind Speed:</li>  
+                <li id="weather"></li>
+                <li id="temperature"></li>
+                <li id="humidity"></li>
+                <li id="wind-speed"></li>  
             </ul>
         </article>
-        <article class="toggle">
-            <button id="five-day" class="btn">5-Day Forecast</button>
+    </section>  
+
+    <!-- Display 5day forecast section -->
+
+    <section id="daydisplay" class="container border-top border-bottom displayday">
+        <article class="heading">
+            <h2>5-Days Forecast</h2>
+        </article>
+        <article class="row">
+            <!-- <div id="day2" class="col">
+                <h3 id="date2"></h3>
+                <img id="icon" alt="weather-icon">
+                <ul>
+                    <li id="weather"></li>
+                    <li id="temperature"></li>
+                    <li id="humidity"></li>
+                    <li id="wind-speed"></li>  
+                </ul>
+            </div> -->
         </article>
     </section>  
 

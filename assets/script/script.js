@@ -10,14 +10,19 @@ var humidityEl = document.getElementById('humidity');
 var windSpeedEl = document.getElementById('wind-speed');
 var displayResultEl = document.getElementById('display');
 var addCityEl = document.getElementById('searched-city');
-displayResultEl.classList.add("hide");
+var fivedayRowEl = document.querySelector('.row');
+var dayDisplayEl = document.getElementById('daydisplay');
 const ApiKey = "c42b97fce8e9798a49e614a426da209d";
+displayResultEl.classList.add("hide");
+dayDisplayEl.classList.add("hide");
+
   
 // Function to search and fetch data
 searchButton.addEventListener('click', () => {
     var inputValue = searchInput.value.trim();
     if (inputValue.length != 0) {
       fetchAPI(inputValue);
+      fetchForecastAPI(inputValue);
       searchInput.value ="";
     }
 });
@@ -25,8 +30,8 @@ searchButton.addEventListener('click', () => {
 // function to fetch weather data using API key
 function fetchAPI(inputCity) {
    // Fetch request
-      // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=imperial&appid=${ApiKey}`)
-      fetch("./assets/script/response.json")
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=imperial&appid=${ApiKey}`)
+      // fetch("./assets/script/response.json")
       .then(res => res.json())
       .then((data) => {
         // call back function to display the city weather data
@@ -64,7 +69,7 @@ function displayData(searchResult) {
   dateEl.innerText = "(" + new Date().toLocaleDateString() + ")";
   imgsource = imgsource + searchResult.weather[0].icon + ".png";
   imageEl.setAttribute('src', imgsource);
-  weatherEl.innerText = "Weather forecast: " + searchResult.weather[0].description;
+  weatherEl.innerText = `Weather Forecast: ${searchResult.weather[0].description}`;
   temperatureEl.innerText = `Temperature: ${searchResult.main.temp} °F`;
   humidityEl.innerText = `Humidity: ${searchResult.main.humidity} %`;
   windSpeedEl.innerText = `Wind Speed: ${searchResult.wind.speed} mph`;
@@ -90,5 +95,55 @@ addCityEl.addEventListener('click', function(event) {
   if (event.target.classList == "btn city ripple-surface") {
       var searchVal = event.target.textContent;
       fetchAPI(searchVal);
+      fetchForecastAPI(searchVal);
   }
 });
+
+// function to fetch weather data for 5 days using API key
+function fetchForecastAPI(inputCity) {
+  // Fetch request
+     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${ApiKey}`)
+    //  fetch("./assets/script/response1.json")
+     .then(res => res.json())
+     .then((data) => {
+       // call back function to display the city weather data
+       displayForecastData(data);
+       })
+     .catch(error => console.error(error))
+}
+
+// Function to display 5 days data
+function displayForecastData(data) {
+  dayDisplayEl.classList.add("show");
+  fivedayRowEl.innerHTML = "";
+
+  var myData = data.list.filter(item => {
+    if (item.dt_txt.endsWith("06:00:00")) {
+      return true;  
+    }
+  });
+  myData.forEach(item => {
+    var divEl = document.createElement('div');
+    divEl.setAttribute("class", "col");
+    fivedayRowEl.appendChild(divEl);
+    var h3El = document.createElement('h3');
+    h3El.innerText = item.dt_txt.split(" ")[0];
+    divEl.appendChild(h3El);
+    var imgEl = document.createElement('img');
+    var imgindex = item.weather[0].icon;
+    var imgsource = `https://openweathermap.org/img/w/${imgindex}.png`;
+    imgEl.setAttribute('src', imgsource);
+    divEl.appendChild(imgEl);
+    var ulistEl = document.createElement('ul');
+    divEl.appendChild(ulistEl);
+    var listEl = document.createElement('li');
+    listEl.innerText = `Temperature: ${item.main.temp} °F`;
+    ulistEl.appendChild(listEl);
+    var list1El = document.createElement('li');
+    list1El.innerText = `Humidity: ${item.main.humidity} %`;
+    ulistEl.appendChild(list1El);
+    var list2El = document.createElement('li');
+    list2El.innerText = `Wind Speed: ${item.wind.speed} mph`;
+    ulistEl.appendChild(list2El);
+  });
+}
