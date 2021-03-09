@@ -181,6 +181,21 @@ header h1 {
     color: whitesmoke;
 }
 
+/* .errormsg {
+    display: block;
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 120px;
+    right:100px; 
+} */
+
+.modal {
+    width: 70%;
+    height: 40%;
+    
+}
+
 /* Media Queries */
 
 @media screen and (min-width: 600px) {
@@ -202,25 +217,25 @@ header h1 {
 /* For laptops */
 
 @media screen and (min-width: 1200px) {
-#searchbox {
-    width:50%;
-    display: block;
-    float: left;
+    #searchbox {
+        width:50%;
+        display: block;
+        float: left;
     }
 
-.displayres, 
-.displayday {
-    width:50%;
-    display: block;
-    float: right;
+    .displayres, 
+    .displayday {
+        width:50%;
+        padding-right: 50px;
+        display: block;
+        float: right;
     }
-} 
 
-.hide {
-    display: none;
-}
+    .hide {
+        display: none;
+    }
 
-.show {
-    display: flex;
-}
+    .show {
+        display: flex;
+    }
 }

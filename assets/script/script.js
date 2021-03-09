@@ -12,7 +12,12 @@ var displayResultEl = document.getElementById('display');
 var addCityEl = document.getElementById('searched-city');
 var fivedayRowEl = document.querySelector('.row');
 var dayDisplayEl = document.getElementById('daydisplay');
+var myModal = document.getElementById('myModal');
+var myModalTitle = document.querySelector('.modal-title');
+var myModalBody = document.getElementById('modalbodyval');
+var closeModalEl = document.querySelector('.btn-close');
 const ApiKey = "c42b97fce8e9798a49e614a426da209d";
+myModal.classList.add("hide");
 displayResultEl.classList.add("hide");
 dayDisplayEl.classList.add("hide");
 
@@ -21,18 +26,28 @@ dayDisplayEl.classList.add("hide");
 searchButton.addEventListener('click', () => {
     var inputValue = searchInput.value.trim();
     if (inputValue.length != 0) {
-      fetchAPI(inputValue);
-      fetchForecastAPI(inputValue);
+      var returnStatus = fetchAPI(inputValue);
+      console.log(returnStatus);
+      if (returnStatus == 0) {
+        fetchForecastAPI(inputValue);
+      }
       searchInput.value ="";
     }
 });
 
 // function to fetch weather data using API key
 function fetchAPI(inputCity) {
+  var returnStatus = -1;
    // Fetch request
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=imperial&appid=${ApiKey}`)
       // fetch("./assets/script/response.json")
-      .then(res => res.json())
+      .then(res => {
+        if (res.status != 200) {
+          throw Error(res.status + " " + res.statusText);
+        } else {
+          return res.json();
+        }
+      })
       .then((data) => {
         // call back function to display the city weather data
         displayData(data);
@@ -56,8 +71,18 @@ function fetchAPI(inputCity) {
 
         // Call back function to display searched city
         searchedCityDisplay();
+        returnStatus = 0;
         })
-      .catch(error => console.error(error))
+      .catch(error => {
+        myModal.setAttribute('class', 'show');
+        myModalTitle.innerText = "An Error Occured";
+        myModalBody.innerText = error;
+         closeModalEl.addEventListener('click',() => {
+           myModal.setAttribute('class', 'hide');
+         });
+        returnStatus = 1;
+      })
+      return returnStatus;
 }
 
 // Function to display search results
@@ -102,14 +127,27 @@ addCityEl.addEventListener('click', function(event) {
 // function to fetch weather data for 5 days using API key
 function fetchForecastAPI(inputCity) {
   // Fetch request
-     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${ApiKey}`)
-    //  fetch("./assets/script/response1.json")
-     .then(res => res.json())
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${ApiKey}`)
+    // fetch("./assets/script/response1.json")
+    .then(res => {
+      if (res.status != 200) {
+        throw Error(res.status + " " + res.statusText);
+      } else {
+        return res.json();
+      }
+    })
      .then((data) => {
        // call back function to display the city weather data
        displayForecastData(data);
        })
-     .catch(error => console.error(error))
+       .catch(error => { 
+        myModal.setAttribute('class', 'show');
+        myModalTitle.innerText = "An Error Occured";
+        myModalBody.innerText = error;
+        closeModalEl.addEventListener('click',() => {
+          myModal.setAttribute('class', 'hide');
+        });
+      })
 }
 
 // Function to display 5 days data
