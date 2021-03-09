@@ -43,16 +43,34 @@
             </div>
         </article>
         <article id="searched-city" class="city-display">
-            <!-- <button class="btn city"> -->
-                <!-- <i class="far fa-heart"></i> -->
-            </button>
+            <!-- <button class="btn city"> 
+                <i class="far fa-heart"></i>
+            </button> -->
         </article>
     </section>  
+
+     <!-- Display modal for error messages -->
+
+     <div id="myModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Title:</h5>
+                    <button type="button" class="btn-close" 
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalbodyval">Sample Text</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Display result section -->
     <section id="display" class="container border-top border-bottom displayres">
         <article class="heading">
             <h2 id="location">Location</h2>
+            <h2 id="country">Country</h2>
             <h2 id="date">Date</h2>
         </article>
         <article class="list">
@@ -86,23 +104,6 @@
         </article>
     </section>  
 
-    <!-- Display modal for error messages -->
-<section class="errormsg">
-    <div id="myModal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Title:</h5>
-                    <button type="button" class="btn-close" 
-                    aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="modalbodyval">Sample Text</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
     <!-- !-- MDB -->
     <script
     type="text/javascript"

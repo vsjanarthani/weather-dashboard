@@ -2,6 +2,7 @@
 const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('search-input');
 var locationEl = document.getElementById('location');
+var countryEl = document.getElementById('country');
 var dateEl = document.getElementById('date');
 var imageEl = document.getElementById('icon');
 var weatherEl = document.getElementById('weather');
@@ -26,18 +27,14 @@ dayDisplayEl.classList.add("hide");
 searchButton.addEventListener('click', () => {
     var inputValue = searchInput.value.trim();
     if (inputValue.length != 0) {
-      var returnStatus = fetchAPI(inputValue);
-      console.log(returnStatus);
-      if (returnStatus == 0) {
-        fetchForecastAPI(inputValue);
-      }
+      fetchAPI(inputValue);
+      fetchForecastAPI(inputValue);
       searchInput.value ="";
     }
 });
 
 // function to fetch weather data using API key
 function fetchAPI(inputCity) {
-  var returnStatus = -1;
    // Fetch request
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=imperial&appid=${ApiKey}`)
       // fetch("./assets/script/response.json")
@@ -71,26 +68,26 @@ function fetchAPI(inputCity) {
 
         // Call back function to display searched city
         searchedCityDisplay();
-        returnStatus = 0;
         })
       .catch(error => {
+        displayResultEl.setAttribute('class', 'hide');
+        dayDisplayEl.setAttribute('class', 'hide');
         myModal.setAttribute('class', 'show');
-        myModalTitle.innerText = "An Error Occured";
+        myModalTitle.innerText = "Oops, Something went wrong. Try again";
         myModalBody.innerText = error;
-         closeModalEl.addEventListener('click',() => {
-           myModal.setAttribute('class', 'hide');
-         });
-        returnStatus = 1;
+        closeModalEl.addEventListener('click',() => {
+          myModal.setAttribute('class', 'hide');
+        });
       })
-      return returnStatus;
 }
 
 // Function to display search results
 
 function displayData(searchResult) {
-  displayResultEl.classList.add("show");
+  displayResultEl.setAttribute('class', 'container border-top border-bottom displayres show');
   var imgsource = "https://openweathermap.org/img/w/";
-  locationEl.innerText = searchResult.name;
+  locationEl.innerText = searchResult.name + ",";
+  countryEl.innerText = searchResult.sys.country;
   dateEl.innerText = "(" + new Date().toLocaleDateString() + ")";
   imgsource = imgsource + searchResult.weather[0].icon + ".png";
   imageEl.setAttribute('src', imgsource);
@@ -118,6 +115,7 @@ searchedCityDisplay();
 // function to display weather data for searched cities
 addCityEl.addEventListener('click', function(event) {
   if (event.target.classList == "btn city ripple-surface") {
+      myModal.setAttribute('class', 'hide');
       var searchVal = event.target.textContent;
       fetchAPI(searchVal);
       fetchForecastAPI(searchVal);
@@ -142,7 +140,7 @@ function fetchForecastAPI(inputCity) {
        })
        .catch(error => { 
         myModal.setAttribute('class', 'show');
-        myModalTitle.innerText = "An Error Occured";
+        myModalTitle.innerText = "Oops, Something went wrong. Try again";
         myModalBody.innerText = error;
         closeModalEl.addEventListener('click',() => {
           myModal.setAttribute('class', 'hide');
@@ -152,9 +150,8 @@ function fetchForecastAPI(inputCity) {
 
 // Function to display 5 days data
 function displayForecastData(data) {
-  dayDisplayEl.classList.add("show");
+  dayDisplayEl.setAttribute('class', 'container border-top border-bottom displayday show');
   fivedayRowEl.innerHTML = "";
-
   var myData = data.list.filter(item => {
     if (item.dt_txt.endsWith("06:00:00")) {
       return true;  
@@ -165,7 +162,12 @@ function displayForecastData(data) {
     divEl.setAttribute("class", "col");
     fivedayRowEl.appendChild(divEl);
     var h3El = document.createElement('h3');
-    h3El.innerText = item.dt_txt.split(" ")[0];
+    var str = item.dt_txt.split(" ")[0];
+    var arr = str.split("-");
+    var year = arr.shift();
+    arr.push(year);
+    console.log(arr.join("-"));
+    h3El.innerText = arr.join("-");
     divEl.appendChild(h3El);
     var imgEl = document.createElement('img');
     var imgindex = item.weather[0].icon;

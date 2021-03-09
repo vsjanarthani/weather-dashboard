@@ -19,6 +19,7 @@ header {
     display: flex;
     justify-content: center; 
     align-items: center;
+    z-index: 50;
 }
 
 header h1 {
@@ -38,6 +39,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     align-self: center;
+    z-index: 2;
 }
 
 .search h2 {
@@ -94,6 +96,7 @@ header h1 {
 
 .heading {
     display: flex;
+    z-index: 2;
 }
 
 .heading h2 {
@@ -129,14 +132,6 @@ header h1 {
     border: 2px solid grey;
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: flex;
-}
-
 /* 5 days forecast section */
 
 .row {
@@ -148,6 +143,7 @@ header h1 {
     align-items: center;
     flex-grow: inherit; 
     margin: 0;
+    z-index: 2;
 }
 
 .col {
@@ -163,6 +159,7 @@ header h1 {
     justify-content: center;
     align-items: center;
     background-color: #34245a;
+    opacity: 90%;
 }
 
 .col h3 {
@@ -181,22 +178,26 @@ header h1 {
     color: whitesmoke;
 }
 
-/* .errormsg {
-    display: block;
-    width: 80%;
-    height: 80%;
-    position: fixed;
-    top: 120px;
-    right:100px; 
-} */
-
 .modal {
-    width: 70%;
-    height: 40%;
-    
+    width: 100%;
+    height: 40%; 
+    z-index: 10;   
 }
 
-/* Media Queries */
+.modal-dialog {
+    width: 80%;
+    height: 80%;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+/* Media Queries for tablets*/
 
 @media screen and (min-width: 600px) {
 
@@ -206,29 +207,57 @@ header h1 {
 
     .row {
         flex-direction: row;
-        width: 80%;
-        justify-content: center;  
+        width: 90%;
+        justify-content: center;
+        align-items: center;  
     }
-    .col {
-        width: 100%;
+
+    .col h3 {
+        font-size: 25px;
     }
+    .col ul li,
+    .list ul li,
+    .form-control::placeholder {
+        font-size: 20px;
+    }
+
+    .city {
+        font-size: 16px;
+        padding: 5px 0 5px 110px;
+    }
+
 }
 
 /* For laptops */
 
 @media screen and (min-width: 1200px) {
+
+    header h1 {
+        font-size: 55px;
+    }
+
+    .search h2 {
+        text-align: start;
+    }
+
     #searchbox {
-        width:50%;
+        width:30%;
         display: block;
         float: left;
+        margin: 50px 0 0 150px;
     }
 
     .displayres, 
     .displayday {
         width:50%;
-        padding-right: 50px;
+        padding-right: 150px;
         display: block;
         float: right;
+    }
+
+    .city-display {
+        max-width: 370px;
+        padding-left: 0;
     }
 
     .hide {
