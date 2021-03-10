@@ -287,14 +287,18 @@ header h1 {
         min-width: 50%;
     }
 
+    .container {
+        padding: 10px;
+    }
+
     .displayres, 
     .displayday {
         width:60%;
-        padding-right: 20%;
+        padding-right: 10%;
         display: block;
         float: right;
     }
-
+   
     .city-display {
         max-width: 370px;
         padding-left: 0;
