@@ -27,6 +27,7 @@ dayDisplayEl.classList.add("hide");
 searchButton.addEventListener('click', () => {
     var inputValue = searchInput.value.trim();
     if (inputValue.length != 0) {
+      myModal.setAttribute('class', 'hide');
       fetchAPI(inputValue);
       fetchForecastAPI(inputValue);
       searchInput.value ="";
@@ -166,7 +167,6 @@ function displayForecastData(data) {
     var arr = str.split("-");
     var year = arr.shift();
     arr.push(year);
-    console.log(arr.join("-"));
     h3El.innerText = arr.join("-");
     divEl.appendChild(h3El);
     var imgEl = document.createElement('img');

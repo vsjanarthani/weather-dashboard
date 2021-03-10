@@ -1,7 +1,12 @@
 # Weather Dashboard
 
 ## Description
+The weather dashboard helps you to search for daily weather and 5 day forecast of a city. The following formats can be used to search: 
+1. city name (eg: San Fransisco)
+2. city name,statecode (eg: Newark,ca)
+3. city name,statecode,countrycode (eg: Newark,ca,us)
 
+Please note that
 
 ## Live URL
 Please find the website deployed here - [(/)]
@@ -11,10 +16,13 @@ Please find the website deployed here - [(/)]
 * CSS
 * JavaScript
 
-## Screenshot of the Deployed Webpage
-![webpage](./assets/images/)
+## Data Source
+* https://openweathermap.org/api
 
-![webpage](./assets/images/)
+## Screenshot of the Deployed Webpage
+![webpage](./assets/images/screenshot1.png)
+
+![webpage](./assets/images/screenshot2.png)
 
 ## Contribution
 Made with :heart: by **Janarthani V Subramaniam**
