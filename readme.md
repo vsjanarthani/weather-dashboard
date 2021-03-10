@@ -6,7 +6,7 @@ The weather dashboard helps you to search for daily weather and 5 day forecast o
 2. city name,statecode (eg: Newark,ca)
 3. city name,statecode,countrycode (eg: Newark,ca,us)
 
-Please note that
+Please use ISO 3166 country codes for better results. if you get 404 not found error, try refining the search input. Last 5 searches are saved in local storage and displayed as button.
 
 ## Live URL
 Please find the website deployed here - [(/)]

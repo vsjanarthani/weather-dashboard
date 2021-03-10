@@ -258,6 +258,7 @@ header h1 {
         display: block;
         float: left;
         margin: 50px 0 0 150px;
+        padding-left: 10%;
     }
 
     .modal-dialog {
@@ -267,8 +268,8 @@ header h1 {
 
     .displayres, 
     .displayday {
-        width:50%;
-        padding-right: 150px;
+        width:65%;
+        padding-right: 20%;
         display: block;
         float: right;
     }
