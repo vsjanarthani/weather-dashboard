@@ -150,7 +150,7 @@ header h1 {
     flex-wrap: wrap;
     justify-content: center; 
     align-items: center;
-    flex-grow: inherit; 
+    flex-grow: 0;
     margin: 0;
     z-index: 2;
 }
@@ -160,8 +160,8 @@ header h1 {
     height: auto;
 	background-color: whitesmoke;
 	border-radius: 30px;
-	padding: 20px;
-    margin: 20px;
+	padding: 20px 0 20px 0;
+    margin: 20px 0 20px 0;
     box-shadow: 0px 0px 8px 0px;
     display: flex;
     flex-direction: column;
@@ -234,13 +234,14 @@ header h1 {
     .row {
         flex-direction: row;
         width: 100%;
-        justify-content: center;
-        align-items: stretch; 
-        flex-grow: inherit; 
+        justify-content: center; 
     }
 
     .col {
         min-width: 300px;
+        max-width: 450px;
+        padding: 20px;
+        margin: 20px;
     }
 
     .col h3,
@@ -302,10 +303,6 @@ header h1 {
     .city-display {
         max-width: 370px;
         padding-left: 0;
-    }
-
-    .col {
-        flex: 1;
     }
 
     .hide {

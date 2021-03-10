@@ -112,19 +112,14 @@ function displayData(searchResult) {
     uvindexEl.innerText = UVIndex;
     if (UVIndex <= 2) {
       uvindexEl.setAttribute("style", "background-color: lightgreen;");
-      console.log(UVIndex);
     } else if (UVIndex > 2 && UVIndex <= 5 ) {
       uvindexEl.setAttribute("style", "background-color: yellow;");
-      console.log(UVIndex);
     } else if (UVIndex > 5 && UVIndex <= 7 ) {
       uvindexEl.setAttribute("style", "background-color: orange;");
-      console.log(UVIndex);
     } else if (UVIndex > 7 && UVIndex <= 10 ) {
       uvindexEl.setAttribute("style", "background-color: tomato;");
-      console.log(UVIndex);
     } else {
       uvindexEl.setAttribute("style", "background-color: violet;");
-      console.log(UVIndex);
     }
   })
   .catch(error => {
