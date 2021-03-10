@@ -9,6 +9,7 @@ var weatherEl = document.getElementById('weather');
 var temperatureEl = document.getElementById('temperature');
 var humidityEl = document.getElementById('humidity');
 var windSpeedEl = document.getElementById('wind-speed');
+var uvindexEl = document.getElementById('uv-index');
 var displayResultEl = document.getElementById('display');
 var addCityEl = document.getElementById('searched-city');
 var fivedayRowEl = document.querySelector('.row');
@@ -96,6 +97,46 @@ function displayData(searchResult) {
   temperatureEl.innerText = `Temperature: ${searchResult.main.temp} °F`;
   humidityEl.innerText = `Humidity: ${searchResult.main.humidity} %`;
   windSpeedEl.innerText = `Wind Speed: ${searchResult.wind.speed} mph`;
+  var longi = searchResult.coord.lon;
+  var lati = searchResult.coord.lat;
+  fetch(`http://api.openweathermap.org/data/2.5/uvi?lat=${lati}&lon=${longi}&appid=${ApiKey}`)
+  .then(res => {
+    if (res.status != 200) {
+      throw Error(res.status + " " + res.statusText);
+    } else {
+      return res.json();
+    }
+  })
+  .then((data) => {
+    const UVIndex = data.value;
+    uvindexEl.innerText = UVIndex;
+    if (UVIndex <= 2) {
+      uvindexEl.setAttribute("style", "background-color: lightgreen;");
+      console.log(UVIndex);
+    } else if (UVIndex > 2 && UVIndex <= 5 ) {
+      uvindexEl.setAttribute("style", "background-color: yellow;");
+      console.log(UVIndex);
+    } else if (UVIndex > 5 && UVIndex <= 7 ) {
+      uvindexEl.setAttribute("style", "background-color: orange;");
+      console.log(UVIndex);
+    } else if (UVIndex > 7 && UVIndex <= 10 ) {
+      uvindexEl.setAttribute("style", "background-color: tomato;");
+      console.log(UVIndex);
+    } else {
+      uvindexEl.setAttribute("style", "background-color: violet;");
+      console.log(UVIndex);
+    }
+  })
+  .catch(error => {
+    displayResultEl.setAttribute('class', 'hide');
+    dayDisplayEl.setAttribute('class', 'hide');
+    myModal.setAttribute('class', 'show');
+    myModalTitle.innerText = "Oops, Something went wrong. Try again";
+    myModalBody.innerText = error;
+    closeModalEl.addEventListener('click',() => {
+      myModal.setAttribute('class', 'hide');
+    });
+  })
 }
 
 // Function to apend and display searched results

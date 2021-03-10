@@ -7,6 +7,7 @@
 body {
     font-family: FontAwesome;
     background-color: whitesmoke;
+    color: #34245a;
 }
 
 /* Mobile First design */
@@ -64,6 +65,12 @@ header h1 {
     height: 35px;
 }
 
+.form-control::placeholder {
+    color: #34245a;
+    font-variant: small-caps;
+    font-size: medium;
+}
+
 .btn {
     width: 20%;
     height:35px;
@@ -88,6 +95,8 @@ header h1 {
     max-width: 350px;
     height: 35px;
     background-color: white;
+    color: #34245a;
+    font-weight: bold;
     display: inline;
     padding: 5px;
 }
@@ -104,7 +113,6 @@ header h1 {
     padding:2px;
     font-variant: small-caps;
     font-weight: bold;
-    color: #34245a;
 }
 
 .list {
@@ -194,6 +202,13 @@ header h1 {
 .modal-body {
     font-size: medium;
     font-weight: bold;
+}
+
+#uv-index {
+    min-width: 14px;
+    border: 2px solid whitesmoke;
+    border-radius: 20%;
+    padding: 0 10px 0 10px;
 }
 
 .hide {
