@@ -134,6 +134,7 @@ header h1 {
 
 /* 5 days forecast section */
 
+
 .row {
     width: 100%;
     display: flex;
@@ -217,9 +218,14 @@ header h1 {
 
     .row {
         flex-direction: row;
-        width: 90%;
+        width: 100%;
         justify-content: center;
-        align-items: center;  
+        align-items: stretch; 
+        flex-grow: inherit; 
+    }
+
+    .col {
+        min-width: 300px;
     }
 
     .col h3,
@@ -253,12 +259,12 @@ header h1 {
     }
 
     #searchbox {
-        width:30%;
+        width:35%;
         min-height: 400px;
         display: block;
         float: left;
-        margin: 50px 0 0 150px;
-        padding-left: 10%;
+        padding-left: 8%;
+        padding-top: 2%;
     }
 
     .modal-dialog {
@@ -268,7 +274,7 @@ header h1 {
 
     .displayres, 
     .displayday {
-        width:65%;
+        width:60%;
         padding-right: 20%;
         display: block;
         float: right;
@@ -278,6 +284,11 @@ header h1 {
         max-width: 370px;
         padding-left: 0;
     }
+
+    .col {
+        flex: 1;
+    }
+
     .hide {
         display: none;
     }
