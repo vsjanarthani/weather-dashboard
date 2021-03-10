@@ -99,7 +99,7 @@ function displayData(searchResult) {
   windSpeedEl.innerText = `Wind Speed: ${searchResult.wind.speed} mph`;
   var longi = searchResult.coord.lon;
   var lati = searchResult.coord.lat;
-  fetch(`http://api.openweathermap.org/data/2.5/uvi?lat=${lati}&lon=${longi}&appid=${ApiKey}`)
+  fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${lati}&lon=${longi}&appid=${ApiKey}`)
   .then(res => {
     if (res.status != 200) {
       throw Error(res.status + " " + res.statusText);
