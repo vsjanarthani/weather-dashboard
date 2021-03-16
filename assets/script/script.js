@@ -18,10 +18,10 @@ var myModal = document.getElementById('myModal');
 var myModalTitle = document.querySelector('.modal-title');
 var myModalBody = document.getElementById('modalbodyval');
 var closeModalEl = document.querySelector('.btn-close');
-const ApiKey = "c42b97fce8e9798a49e614a426da209d";
 myModal.classList.add("hide");
 displayResultEl.classList.add("hide");
 dayDisplayEl.classList.add("hide");
+const ApiKey = "removedTheKeyForPrivacyPurposes";
 
   
 // Function to search and fetch data
@@ -38,8 +38,8 @@ searchButton.addEventListener('click', () => {
 // function to fetch weather data using API key
 function fetchAPI(inputCity) {
    // Fetch request
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=imperial&appid=${ApiKey}`)
-      // fetch("./assets/script/response.json")
+      // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&units=imperial&appid=${ApiKey}`)
+      fetch("./assets/script/response.json")
       .then(res => {
         if (res.status != 200) {
           throw Error(res.status + " " + res.statusText);
@@ -99,7 +99,8 @@ function displayData(searchResult) {
   windSpeedEl.innerText = `Wind Speed: ${searchResult.wind.speed} mph`;
   var longi = searchResult.coord.lon;
   var lati = searchResult.coord.lat;
-  fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${lati}&lon=${longi}&appid=${ApiKey}`)
+  // fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${lati}&lon=${longi}&appid=${ApiKey}`)
+  fetch("./assets/script/responseuv.json")
   .then(res => {
     if (res.status != 200) {
       throw Error(res.status + " " + res.statusText);
@@ -162,8 +163,8 @@ addCityEl.addEventListener('click', function(event) {
 // function to fetch weather data for 5 days using API key
 function fetchForecastAPI(inputCity) {
   // Fetch request
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${ApiKey}`)
-    // fetch("./assets/script/response1.json")
+    // fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${inputCity}&units=imperial&appid=${ApiKey}`)
+    fetch("./assets/script/response1.json")
     .then(res => {
       if (res.status != 200) {
         throw Error(res.status + " " + res.statusText);
